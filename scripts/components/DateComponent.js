@@ -4,9 +4,9 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 			<div className="date">
-				<header>September</header>
-				<h1>23</h1>
-				<h2>Saturday</h2>
+				<header className="month">{this.props.month}</header>
+				<h1 className="day">{this.props.day}</h1>
+				<h2 className="dayOfWeek">{this.props.dayOfWeek}</h2>
 			</div>
 		);
 	}

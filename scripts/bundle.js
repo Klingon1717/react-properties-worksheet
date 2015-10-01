@@ -31,9 +31,7 @@ function drainQueue() {
         currentQueue = queue;
         queue = [];
         while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
+            currentQueue[queueIndex].run();
         }
         queueIndex = -1;
         len = queue.length;
@@ -85,6 +83,7 @@ process.binding = function (name) {
     throw new Error('process.binding is not supported');
 };
 
+// TODO(shtylman)
 process.cwd = function () { return '/' };
 process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
@@ -19898,10 +19897,10 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement(ProductBoxComponent, null),
-				React.createElement(ProductBoxComponent, null),
-				React.createElement(ProductBoxComponent, null),
-				React.createElement(ProductBoxComponent, null)
+				React.createElement(ProductBoxComponent, { image: 'http://us.123rf.com/450wm/eye4detail/eye4detail1210/eye4detail121000026/15545435-delicious-red-velvet-layer-cake-with-white-frosting-garnished-with-fresh-cherries-against-white-back.jpg', name: 'Really Beautiful Cake', price: '3 viles of magic', brand: 'Beauty' }),
+				React.createElement(ProductBoxComponent, { image: 'http://us.123rf.com/450wm/belchonock/belchonock1205/belchonock120501423/13556869-chocolate-candy-poured-chocolate-isolated-on-white.jpg?ver=6', price: 'your head', brand: 'The TimeTraveler\'s Revenge', name: 'If you\'re going to take off my head, atleast let me eat cake first' }),
+				React.createElement(ProductBoxComponent, { image: 'http://us.123rf.com/450wm/grafvision/grafvision1211/grafvision121100263/16454803-teen-girl-eating-the-cake.jpg ', brand: 'The Girl With The Most Cake', price: 'all of your integrity', name: 'Lady Cake' }),
+				React.createElement(ProductBoxComponent, { image: 'http://us.123rf.com/450wm/bowie15/bowie151210/bowie15121000015/15662601-man-gorging-of-red-spaghetti-and-drinking-red-wine.jpg', name: 'Spaghett', price: '2 carrier piegons', brand: 'Creep' })
 			),
 			React.createElement(
 				'div',
@@ -19928,10 +19927,10 @@ module.exports = React.createClass({
 			React.createElement(
 				'div',
 				{ className: 'row' },
-				React.createElement(DateComponent, null),
-				React.createElement(DateComponent, null),
-				React.createElement(DateComponent, null),
-				React.createElement(DateComponent, null)
+				React.createElement(DateComponent, { month: 'Halloween', day: '875', dayOfWeek: 'Magic' }),
+				React.createElement(DateComponent, { month: 'Thanksgiving', day: '576775', dayOfWeek: 'The most fun time to be a vegan, I bet.' }),
+				React.createElement(DateComponent, { month: 'Chrimbus', day: 'Isn\'t everyday happening at once', dayOfWeek: 'Billy Murray' }),
+				React.createElement(DateComponent, { month: 'Drink,Drank,Drunk', day: 'errryyydayyy', dayOfWeek: 'Whiskey' })
 			)
 		);
 	}
@@ -19946,20 +19945,21 @@ module.exports = React.createClass({
 	displayName: "exports",
 
 	render: function render() {
+
 		return React.createElement(
 			"div",
 			{ className: "card" },
 			React.createElement(
 				"header",
 				null,
-				React.createElement("img", { src: "http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo.jpg" }),
+				React.createElement("img", { src: this.props.image, className: "image" }),
 				React.createElement(
 					"div",
 					null,
 					React.createElement(
 						"a",
 						{ href: "#", className: "name" },
-						"Tracy Lawrence"
+						this.props.name
 					),
 					React.createElement(
 						"div",
@@ -19967,12 +19967,12 @@ module.exports = React.createClass({
 						React.createElement(
 							"div",
 							{ className: "time" },
-							"23 mins"
+							this.props.time
 						),
 						React.createElement(
 							"div",
 							{ className: "location" },
-							"Milwaukee, WI"
+							this.props.location
 						)
 					)
 				)
@@ -20002,18 +20002,18 @@ module.exports = React.createClass({
 			{ className: "date" },
 			React.createElement(
 				"header",
-				null,
-				"September"
+				{ className: "month" },
+				this.props.month
 			),
 			React.createElement(
 				"h1",
-				null,
-				"23"
+				{ className: "day" },
+				this.props.day
 			),
 			React.createElement(
 				"h2",
-				null,
-				"Saturday"
+				{ className: "dayOfWeek" },
+				this.props.dayOfWeek
 			)
 		);
 	}

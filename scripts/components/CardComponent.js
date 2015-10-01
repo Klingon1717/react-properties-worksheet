@@ -2,15 +2,17 @@ var React = require('react');
 
 module.exports = React.createClass({
 	render: function() {
+
 		return (
 			<div className="card">
 				<header>
-					<img src="http://blogdailyherald.com/wp-content/uploads/2014/10/wallpaper-for-facebook-profile-photo.jpg" />
+					<img src= {this.props.image} className= "image"/>
 					<div>
-						<a href="#" className="name">Tracy Lawrence</a>
+				
+						<a href="#" className="name" >{this.props.name}</a>
 						<div>
-							<div className="time">23 mins</div>
-							<div className="location">Milwaukee, WI</div>
+							<div className="time">{this.props.time}</div>
+							<div className="location">{this.props.location}</div>
 						</div>
 					</div>
 				</header>
